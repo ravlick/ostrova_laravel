@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ContactModel;
 use Illuminate\Http\Request;
 
 
@@ -14,7 +15,8 @@ class MainController extends Controller
     }
 
     public function review(){
-        return view ('review');
+        $reviews = new ContactModel();
+        return view ('review' , ['reviews' => $reviews->all()]);
     }
 
     public function review_check(Request $request){
@@ -23,5 +25,14 @@ class MainController extends Controller
              'subject' => 'required|min:5|max:50',
             'message' => 'required|min:5|max:50'
         ]);
+
+        $review = new ContactModel();
+        $review->email = $request->input('email');
+        $review->subject = $request->input('subject');
+        $review->message = $request->input('message');
+
+        $review->save();
+
+        return redirect()->route('review');
     }
 }

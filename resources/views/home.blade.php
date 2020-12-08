@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title')Страница home
+@section('title')Страница test-home
 @endsection
 
 @section('Main_content')

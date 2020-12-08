@@ -13,6 +13,6 @@
 
 Route::get('/', 'MainController@home');
 
-Route::get('/review' , 'MainController@review');
+Route::get('/review' , 'MainController@review')->name('review');
 
 Route::post('/review/check' , 'MainController@review_check');

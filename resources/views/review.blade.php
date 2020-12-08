@@ -22,5 +22,12 @@
         <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Review text"></textarea>
         <button type="submit" class="btn btn-success">Send</button>
     </form>
+    <h2>All reviews</h2>
+    @foreach($reviews as $el)
+        <div class="alert alert-warning">
+            <h3>{{ $el->subject }}</h3>
+            <p>{{ $el->message }}</p>
+        </div>
+    @endforeach
 @endsection
 
